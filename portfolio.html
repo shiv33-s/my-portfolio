@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio | AIML Student</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.7;
+    }
+    a { color: #67e8f9; text-decoration: none; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: #111827; padding: 16px 8%;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    header h2 { color: #67e8f9; }
+    nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    nav a { color: #e5e7eb; font-size: 14px; }
+    nav a:hover { color: #67e8f9; }
+    section { padding: 75px 8%; scroll-margin-top: 65px; }
+    .hero {
+      min-height: 75vh; display: flex;
+      flex-direction: column; justify-content: center;
+    }
+    .tag { color: #67e8f9; font-weight: bold; }
+    h1 { font-size: clamp(36px, 6vw, 62px); line-height: 1.2; margin: 14px 0; }
+    h1 span { color: #67e8f9; }
+    h2.section-title { font-size: 30px; margin-bottom: 22px; }
+    .intro { max-width: 650px; color: #b8c3d4; margin: 15px 0 25px; }
+    .btn {
+      display: inline-block; padding: 11px 20px;
+      border-radius: 8px; background: #0891b2;
+      color: white; font-weight: bold; margin: 5px 8px 5px 0;
+    }
+    .btn.secondary { background: transparent; border: 1px solid #67e8f9; }
+    .section-alt { background: #111827; }
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px; margin-top: 22px;
+    }
+    .card {
+      background: #172033; padding: 22px;
+      border: 1px solid #29354a; border-radius: 12px;
+    }
+    .card h3 { color: #67e8f9; margin-bottom: 10px; }
+    .card p { color: #b8c3d4; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skills span {
+      background: #172033; border: 1px solid #334155;
+      padding: 8px 14px; border-radius: 20px;
+    }
+    footer {
+      text-align: center; padding: 25px;
+      background: #111827; color: #9ca3af;
+    }
+    @media (max-width: 600px) {
+      header { padding: 15px 5%; }
+      nav { gap: 12px; }
+      section { padding: 55px 6%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>MyPortfolio.</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <p class="tag">HELLO, WELCOME TO MY PORTFOLIO</p>
+  <h1>Hi, I'm <span>Your Name</span></h1>
+  <h2>AIML Student | Aspiring Developer</h2>
+  <p class="intro">
+    I am a B.Tech student interested in Artificial Intelligence,
+    Machine Learning, and developing technology-based solutions
+    to real-world problems.
+  </p>
+  <div>
+    <a class="btn" href="#projects">Explore My Projects</a>
+    <a class="btn secondary" href="#contact">Contact Me</a>
+  </div>
+</section>
+
+<section class="section-alt" id="about">
+  <h2 class="section-title">About Me</h2>
+  <p class="intro">
+    I am an enthusiastic engineering student who enjoys learning
+    new technologies, solving problems, and building useful projects.
+    I am continuously improving my technical skills through academic
+    projects, practical learning, and teamwork.
+  </p>
+</section>
+
+<section id="skills">
+  <h2 class="section-title">My Skills</h2>
+  <div class="skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>C / C++</span>
+    <span>Python (Learning)</span>
+    <span>Machine Learning</span>
+    <span>Artificial Intelligence</span>
+    <span>IoT</span>
+    <span>GitHub</span>
+  </div>
+</section>
+
+
+<section class="section-alt" id="projects">
+  <h2 class="section-title">My Projects</h2>
+
+  <div class="cards">
+
+    <article class="card">
+      <h3>AI-Powered Skill Development Portal</h3>
+      <p>
+        A web platform designed to help students identify
+        skill gaps and discover relevant learning resources.
+      </p>
+      <p><strong>Technologies:</strong> HTML, CSS,
+        JavaScript, Flask, MySQL</p>
+      <p><strong>Status:</strong> In development</p>
+      <a href="https://github.com/shiv33-s"
+         target="_blank" rel="noopener noreferrer">
+        View on GitHub →
+      </a>
+    </article>
+
+    <article class="card">
+      <h3>AI-Based Waste Management System</h3>
+      <p>
+        A software concept that analyzes waste images,
+        classifies waste, and recommends segregation methods.
+      </p>
+      <p><strong>Technologies:</strong> HTML, CSS,
+        JavaScript, Python, Image Classification</p>
+      <p><strong>Status:</strong> Prototype</p>
+      <a href="https://github.com/shiv33-s"
+         target="_blank" rel="noopener noreferrer">
+        View on GitHub →
+      </a>
+    </article>
+
+    <article class="card">
+      <h3>Voice-Assisted Smart Navigation Stick</h3>
+      <p>
+        An assistive device that detects obstacles and
+        provides voice alerts to help users navigate.
+      </p>
+      <p><strong>Technologies:</strong> Arduino Nano,
+        Ultrasonic Sensor, DFPlayer Mini</p>
+      <p><strong>Status:</strong> Academic project</p>
+      <a href="https://github.com/shiv33-s"
+         target="_blank" rel="noopener noreferrer">
+        View on GitHub →
+      </a>
+    </article>
+
+  </div>
+</section>
+
+
+<section id="education">
+  <h2 class="section-title">Education</h2>
+  <div class="card">
+    <h3>Bachelor of Technology (B.Tech)</h3>
+    <p>Artificial Intelligence and Machine Learning</p>
+    <p>D.Y.Patil Agriculture & Technical University Talsande</p>
+    <p>Expected Graduation: 2028</p>
+  </div>
+</section>
+
+<section class="section-alt" id="contact">
+  <h2 class="section-title">Contact Me</h2>
+  <p class="intro">
+    I am open to learning opportunities, internships, collaborations,
+    and exciting projects.
+  </p>
+  <p>Email: <a href="mailto:your.email@example.com">
+    shivaniraje33@gmail.com</a></p>
+  <p>GitHub: <a href="https://github.com/shiv33-s">
+    Visit My GitHub Profile</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/shivani-raje-966bbb377/?isSelfProfile=true">
+    Visit My LinkedIn profile</a></p>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Shivani Raje. All rights reserved.</p>
+  
+</footer>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
