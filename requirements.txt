@@ -3,5 +3,5 @@ Werkzeug>=3.0
 Flask
 PyMuPDF
 python-docx
-
+gunicorn
 
