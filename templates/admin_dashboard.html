@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}Admin dashboard | Capacity Connect{% endblock %}
+{% block content %}<section class="dashboard-welcome"><div><div class="eyebrow">ADMINISTRATION</div>
+    <h1>Platform overview</h1><p>Manage users, learning courses and platform activity.</p></div>
+    <span class="admin-chip">● Admin access</span></section>
+    <div class="metric-grid"><div class="metric-card"><span class="metric-icon blue">♧</span>
+        <small>TOTAL USERS</small><strong>{{ users|length }}</strong><span class="metric-note">Across all roles</span></div>
+        <div class="metric-card"><span class="metric-icon violet">▤</span><small>LEARNING COURSES</small><strong>{{ courses|length }}</strong>
+            <span class="metric-note">Available catalogue</span></div><div class="metric-card"><span class="metric-icon green">↗</span><small>ENROLLMENTS</small>
+                <strong>{{ enrollments }}</strong><span class="metric-note">Course participation</span></div></div><section class="panel"><div class="panel-heading"><div><h2>User management</h2><p>Assign appropriate platform roles</p></div></div>
+                    <div class="table-wrap"><table><thead><tr><th>User</th><th>Email</th><th>Current role</th><th>Update role</th></tr></thead>
+                        <tbody>{% for u in users %}<tr><td><b>{{ u['name'] }}</b><small>{{ u['created_at'] }}</small></td><td>{{ u['email'] }}</td><td><span class="role-pill">{{ u['role']|title }}</span></td><td>{% if u['id'] != user['id'] %}<form class="inline-form" method="post" action="{{ url_for('update_role',user_id=u['id']) }}"><select name="role">{% for role in ['trainee','trainer','admin'] %}
+                            <option value="{{ role }}" {% if role==u['role'] %}selected{% endif %}>{{ role|title }}</option>{% endfor %}</select>
+                            <button class="btn small primary" type="submit">Save</button></form>{% else %}<span class="muted">Your account</span>{% endif %}</td></tr>{% endfor %}</tbody></table></div></section>
+                            <section class="panel"><div class="panel-heading"><div><h2>Course catalogue</h2><p>All courses on the platform</p></div><a href="{{ url_for('course_list') }}">View catalogue →</a></div><div class="table-wrap">
+                                <table><thead><tr><th>Course</th><th>Category</th><th>Trainer</th><th>Competencies</th></tr></thead><tbody>{% for c in courses %}<tr><td><b>{{ c['title'] }}</b></td><td>{{ c['category'] }}</td><td>{{ c['trainer_name'] or '—' }}</td>
+                                <td>{{ c['skills'] }}</td></tr>{% endfor %}</tbody></table></div></section>{% endblock %}

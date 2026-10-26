@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Capacity Connect{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('home') }}"><span class="brand-icon">CC</span><span>Capacity<span class="brand-light">Connect</span><small>Learning • Competency • Growth</small></span></a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <nav class="nav-links">
+<a href="{{ url_for('course_list') }}">Explore Courses</a>   
+ {% if current_user %}
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('resume_analyzer') }}">
+    Resume Analyzer
+</a>
+      <span class="nav-user">{{ current_user['name'] }} · {{ current_user['role']|title }}</span>
+      <a class="nav-button" href="{{ url_for('logout') }}">Log out</a>
+    {% else %}
+    
+      <a href="{{ url_for('login') }}">Log in</a><a class="nav-button" href="{{ url_for('register') }}">Get started</a>
+    {% endif %}
+    
+
+
+  </nav>
+</header>
+<main class="page">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}<div class="flash-stack">{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+<footer><div><strong>CapacityConnect</strong><span> A digital capacity-building and learning portal prototype · </span></div><span>Learn today. Build capability for tomorrow.</span></footer>
+<script>
+document.querySelectorAll('form[data-confirm]').forEach(f=>f.addEventListener('submit',e=>{if(!confirm(f.dataset.confirm))e.preventDefault()}));
+</script>
+</body></html>

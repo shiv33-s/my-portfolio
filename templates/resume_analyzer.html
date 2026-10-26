@@ -1,0 +1,130 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="resume-page">
+
+    <div class="resume-heading">
+        <h1>Resume Analyzer</h1>
+        <p>
+            Upload your resume and compare your skills
+            with a target job description.
+        </p>
+    </div>
+
+    {% if error %}
+    <div class="resume-error" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <div class="resume-card">
+        <form method="POST"
+              action="{{ url_for('resume_analyzer') }}"
+              enctype="multipart/form-data">
+
+            <label for="resume">Upload Resume</label>
+            <input type="file"
+                   id="resume"
+                   name="resume"
+                   accept=".pdf,.docx"
+                   required>
+
+            <small>PDF or DOCX. Maximum size: 5 MB.</small>
+
+            <label for="job_description">
+                Job Description
+            </label>
+            <textarea
+                id="job_description"
+                name="job_description"
+                rows="7"
+                placeholder="Paste the job description here..."
+                required
+            ></textarea>
+
+            <button type="submit" class="resume-button">
+                Analyze Resume
+            </button>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="resume-results">
+        <h2>Analysis Results</h2>
+
+        <div class="resume-score">
+            <p>Recognized Skill Match</p>
+            <strong>{{ result.match_percentage }}%</strong>
+
+            <div class="resume-progress">
+                <div class="resume-progress-fill"
+                     style="width: {{ result.match_percentage }}%;">
+                </div>
+            </div>
+
+            <small>
+                Based on {{ result.job_skill_count }}
+                recognized job skills.
+            </small>
+        </div>
+
+        <p>
+            <strong>Resume word count:</strong>
+            {{ result.word_count }}
+        </p>
+
+        <h3>Skills Found in Resume</h3>
+        {% if result.resume_skills %}
+        <div class="resume-tags">
+            {% for skill in result.resume_skills %}
+            <span class="resume-tag">{{ skill }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No recognized skills found.</p>
+        {% endif %}
+
+        <h3>Matched Skills</h3>
+        {% if result.matched_skills %}
+        <div class="resume-tags">
+            {% for skill in result.matched_skills %}
+            <span class="resume-tag matched">{{ skill }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No matching skills identified.</p>
+        {% endif %}
+
+        <h3>Skills to Consider Developing</h3>
+        {% if result.missing_skills %}
+        <div class="resume-tags">
+            {% for skill in result.missing_skills %}
+            <span class="resume-tag missing">{{ skill }}</span>
+            {% endfor %}
+        </div>
+        <p>
+            Consider learning relevant skills and adding them
+            to your resume only when you genuinely possess them.
+        </p>
+        {% else %}
+        <p>No missing recognized skills identified.</p>
+        {% endif %}
+
+        <h3>Improvement Suggestions</h3>
+        <ul>
+            <li>Tailor your resume to the target role.</li>
+            <li>Include relevant academic and personal projects.</li>
+            <li>Describe your contributions and achievements.</li>
+            <li>Check spelling, formatting, and contact details.</li>
+        </ul>
+
+        <p class="resume-note">
+            This tool uses keyword matching. Its score does not
+            guarantee ATS compatibility or employment.
+        </p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

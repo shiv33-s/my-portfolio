@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Not found | Capacity Connect{% endblock %}
+{% block content %}<section class="empty-state"><h1>Page not found</h1>
+    <p>The page you're looking for may have moved.</p>
+    <a class="btn primary" href="{{ url_for('home') }}">Go home</a></section>{% endblock %}

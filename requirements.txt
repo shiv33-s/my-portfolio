@@ -1,0 +1,7 @@
+Flask>=3.0,<4.0
+Werkzeug>=3.0
+Flask
+PyMuPDF
+python-docx
+
+
